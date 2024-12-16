@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Botón para crear reserva -->
+    <Button
+        android:id="@+id/crear_reserva_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:text="Crear Reserva"
+        android:onClick="Reservar" />
+
+    <!-- Botón para quitar reserva -->
+    <Button
+        android:id="@+id/quitar_reserva_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/crear_reserva_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="Quitar Reserva"
+        android:onClick="QuitarReserva" />
+
+    <!-- TextView para mostrar el estado del LED -->
+    <TextView
+        android:id="@+id/estado_led"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/quitar_reserva_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="Estado LED: Desconocido"
+        android:textSize="18sp" />
+
+    <!-- TextView para mostrar el estado del LED2 -->
+    <TextView
+        android:id="@+id/estado_led2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/estado_led"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Estado LED2: Desconocido"
+        android:textSize="18sp" />
+
+    <!-- Botón para actualizar estados -->
+    <Button
+        android:id="@+id/actualizar_estado_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/estado_led2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="Actualizar Estados"
+        android:onClick="ActualizarEstados" />
+
+</RelativeLayout>
