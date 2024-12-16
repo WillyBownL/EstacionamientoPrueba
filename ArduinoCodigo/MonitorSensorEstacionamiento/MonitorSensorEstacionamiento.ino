@@ -23,7 +23,7 @@ void setup() {
   pinMode(trigger, OUTPUT);
   pinMode(echo, INPUT);
   digitalWrite(trigger, LOW);
-  digitalWrite(led2, LOW);  // Asegurar que LED2 esté apagado al inicio
+  digitalWrite(led2, LOW);  // LED2 esté apagado al inicio
 
   // Conexión WiFi
   Serial.print("Conectando a WiFi");
@@ -110,7 +110,7 @@ String leerEstadoLED2() {
   } else {
     Serial.println("Error al conectar para leer estado del LED2.");
   }
-  led2State.trim(); // Eliminar espacios y saltos de línea
+  led2State.trim(); 
   if (led2State != "0" && led2State != "1") {
     led2State = "0"; // Valor por defecto si no es válido
   }

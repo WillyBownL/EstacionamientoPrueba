@@ -37,13 +37,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Reservar(View view) {
-        // Usa el último valor guardado de field1 y actualiza field2 a 1
+        // último valor guardado de field1 y actualiza field2 a 1
         String url = "https://api.thingspeak.com/update?api_key=BA1O3YURJ40P9H22&field1=" + ultimoValorField1 + "&field2=1";
         enviarPeticion(url);
     }
 
     public void QuitarReserva(View view) {
-        // Usa el último valor guardado de field1 y actualiza field2 a 0
+        // último valor guardado de field1 y actualiza field2 a 0
         String url = "https://api.thingspeak.com/update?api_key=BA1O3YURJ40P9H22&field1=" + ultimoValorField1 + "&field2=0";
         enviarPeticion(url);
     }
@@ -66,13 +66,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // Método para actualizar manualmente los estados
+    // actualizar manualmente los estados
     public void ActualizarEstados(View view) {
         Toast.makeText(this, "Actualizando estados...", Toast.LENGTH_SHORT).show();
         leerEstadoLeds();
     }
 
-    // Método para leer el estado de los LEDs desde ThingSpeak
+    // leer el estado de los LEDs desde ThingSpeak
     private void leerEstadoLeds() {
         String url = "https://api.thingspeak.com/channels/2786195/feeds/last.json?api_key=FBNV181569PY4N5E&t=" + System.currentTimeMillis();
         AsyncHttpClient client = new AsyncHttpClient();
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                         String response = new String(responseBody);
                         Log.d(TAG, "Respuesta de ThingSpeak: " + response);
 
-                        // Parsear el JSON para obtener los valores de field1 y field2
+                        //JSON para obtener los valores de field1 y field2
                         JSONObject json = new JSONObject(response);
                         String field1 = json.optString("field1", "").trim();
                         String field2 = json.optString("field2", "").trim();
@@ -107,14 +107,14 @@ public class MainActivity extends AppCompatActivity {
                         // Guardar el último valor de field1 (distancia)
                         ultimoValorField1 = field1;
 
-                        // Convertir field1 a entero de forma segura
+                        // Convertir field1 a entero
                         int distancia = Integer.parseInt(field1);
 
-                        // Lógica para encender/apagar LED1 según distancia
+                        // encender/apagar LED1 según distancia
                         String estadoLedValue = (distancia > 10) ? "Disponible" : "Ocupado";
                         String estadoLed2Value = field2.equals("1") ? "Reservado" : "No reservado";
 
-                        // Mensajes de depuración
+                        // Mensajes de estado
                         Log.d(TAG, "Distancia recibida: " + distancia);
                         Log.d(TAG, "Estado LED: " + estadoLedValue);
                         Log.d(TAG, "Estado LED2: " + estadoLed2Value);

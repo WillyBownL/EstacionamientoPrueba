@@ -1,5 +1,4 @@
-// Use this file to store all of the private credentials 
-// and connection details
+// Use this file to store all of the private credentials and connection details
 
 #define SECRET_SSID "Crow's nest"		// replace MySSID with your WiFi network name
 #define SECRET_PASS "MustHunt"	// replace MyPassword with your WiFi password
