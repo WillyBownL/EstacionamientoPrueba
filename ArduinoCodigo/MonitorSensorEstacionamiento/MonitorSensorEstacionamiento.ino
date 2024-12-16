@@ -56,7 +56,7 @@ void loop() {
     // Lógica para LED1
     int ledState = (distance > 10) ? 1 : 0;
 
-    // Si LED1 se apaga, también apagar LED2 y enviar su estado
+    // Si LED1 se apaga, también apaga el LED2
     if (ledState == 0) {
       digitalWrite(led2, LOW); // Apagar LED2
       led2State = "0";         // Actualizar el estado local de LED2
@@ -72,11 +72,11 @@ void loop() {
     Serial.println(ledState == 1 ? "LED1 ENCENDIDO" : "LED1 APAGADO");
   }
 
-  // Mostrar el valor recibido para depuración
+  // Valor recibido
   Serial.print("Estado LED2 recibido: ");
   Serial.println(led2State);
 
-  // Convertir y aplicar el estado del LED2
+  // Estado del LED2
   if (led2State == "1") {
     digitalWrite(led2, HIGH); // Encender LED2
     Serial.println("LED2 ENCENDIDO");
@@ -90,7 +90,7 @@ void loop() {
   delay(15500); // Esperar entre iteraciones para respetar los límites de ThingSpeak
 }
 
-// Método para leer el estado del LED2
+// Lectura del estado del LED2
 String leerEstadoLED2() {
   String led2State = "0"; // Valor por defecto
   if (client.connect(host, 80)) {
@@ -103,7 +103,7 @@ String leerEstadoLED2() {
 
     while (client.connected() || client.available()) {
       if (client.available()) {
-        led2State = client.readStringUntil('\n'); // Leer respuesta
+        led2State = client.readStringUntil('\n'); // Respuesta
       }
     }
     client.stop();
@@ -117,7 +117,7 @@ String leerEstadoLED2() {
   return led2State;
 }
 
-// Método para enviar distancia y estado del LED2 a ThingSpeak
+//Enviar distancia y estado del LED2 a ThingSpeak
 void enviarEstadoThingSpeak(int distance, int ledState) {
   if (client.connect(host, 80)) {
     String url = "/update?api_key=";
