@@ -12,7 +12,7 @@ const int channelID = SECRET_CH_ID;           // ID del canal
 const int led = 2;        // LED principal
 const int led2 = 14;      // LED2 controlado remotamente
 const int trigger = 4;    // Trigger del sensor ultrasónico
-const int echo = 5;       // Echo del sensor ultrasónico
+const int echo = 5;       // Pin Echo del sensor ultrasónico
 
 WiFiClient client;
 
@@ -53,7 +53,7 @@ void loop() {
     Serial.print(distance);
     Serial.println(" cm");
 
-    // Lógica para LED1
+    // LED1
     int ledState = (distance > 10) ? 1 : 0;
 
     // Si LED1 se apaga, también apaga el LED2
@@ -63,7 +63,7 @@ void loop() {
       enviarEstadoThingSpeak(distance, 0); // Actualizar estado en ThingSpeak
       Serial.println("Objeto detectado: LED1 y LED2 APAGADOS");
     } else {
-      // Mantener el estado actual de LED2 en ThingSpeak
+      //Estado actual de LED2 en ThingSpeak
       enviarEstadoThingSpeak(distance, led2State.toInt());
     }
 

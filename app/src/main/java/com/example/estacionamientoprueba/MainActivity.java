@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.d(TAG, "Estado LED: " + estadoLedValue);
                         Log.d(TAG, "Estado LED2: " + estadoLed2Value);
 
-                        // Actualizar los TextView en el hilo principal
+                        // Actualizar los TextView 
                         runOnUiThread(() -> {
                             estadoLed.setText("Disponibilidad: " + estadoLedValue);
                             estadoLed2.setText("Reserva: " + estadoLed2Value);
