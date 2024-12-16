@@ -20,30 +20,30 @@ public class MainActivity extends AppCompatActivity {
     TextView estadoLed, estadoLed2;
     private static final String TAG = "MainActivity";
 
-    // Variable global para almacenar el último valor de field1 (LED1)
-    private String ultimoValorField1 = "0"; // Valor inicial predeterminado
+    // Variable para almacenar el último valor de field1 (LED1)
+    private String ultimoValorField1 = "0"; // Valor inicial  que  es predeterminado
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Inicializar los TextView
+        // Iniciar los TextView
         estadoLed = findViewById(R.id.estado_led);
         estadoLed2 = findViewById(R.id.estado_led2);
 
-        // Leer el estado inicial de los LEDs
+        // Lectura  del estado inicial de los LEDs
         leerEstadoLeds();
     }
 
     public void Reservar(View view) {
-        // último valor guardado de field1 y actualiza field2 a 1
+        // Último valor guardado de field1 y actualización del valor del field2 a 1
         String url = "https://api.thingspeak.com/update?api_key=BA1O3YURJ40P9H22&field1=" + ultimoValorField1 + "&field2=1";
         enviarPeticion(url);
     }
 
     public void QuitarReserva(View view) {
-        // último valor guardado de field1 y actualiza field2 a 0
+        // Último valor guardado de field1 y actualiza el valor del field2 a 0
         String url = "https://api.thingspeak.com/update?api_key=BA1O3YURJ40P9H22&field1=" + ultimoValorField1 + "&field2=0";
         enviarPeticion(url);
     }
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                         String estadoLedValue = (distancia > 10) ? "Disponible" : "Ocupado";
                         String estadoLed2Value = field2.equals("1") ? "Reservado" : "No reservado";
 
-                        // Mensajes de estado
+                        // Mensajes sobre el estado
                         Log.d(TAG, "Distancia recibida: " + distancia);
                         Log.d(TAG, "Estado LED: " + estadoLedValue);
                         Log.d(TAG, "Estado LED2: " + estadoLed2Value);
